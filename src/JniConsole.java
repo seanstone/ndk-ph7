@@ -16,8 +16,7 @@ public class JniConsole extends Activity
         textview = new TextView(this);
         setContentView(textview);
 
-        String str = stringFromJNI();
-        textview.setText(str);
+        init();
     }
 
     public void print(String string)
@@ -25,7 +24,7 @@ public class JniConsole extends Activity
         textview.setText(string);
     }
 
-    public native String stringFromJNI();
+    public native void init();
 
     static
     {
