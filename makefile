@@ -12,4 +12,4 @@ install:
 
 .PHONY: clean
 clean:
-	rm -r bin libs obj
+	rm -r bin libs obj gen

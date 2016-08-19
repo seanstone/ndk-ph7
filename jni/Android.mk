@@ -10,7 +10,7 @@ LOCAL_C_INCLUDES += $(LOCAL_PATH)/include
 FILE_LIST += $(wildcard $(LOCAL_PATH)/../src/*.c)
 LOCAL_SRC_FILES := $(FILE_LIST:$(LOCAL_PATH)/%=%)
 
-LOCAL_LDLIBS    := -llog -landroid -lEGL -lGLESv2 -latomic
+LOCAL_LDLIBS    := -llog -landroid #-lEGL -lGLESv2 -latomic
 # LOCAL_STATIC_LIBRARIES := android_native_app_glue
 
 include $(BUILD_SHARED_LIBRARY)
