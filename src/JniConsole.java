@@ -1,4 +1,4 @@
-package org.bitbucket.seanstone5923.ndkexample;
+package com.github.seanstone.ndkexample;
 
 import android.app.Activity;
 import android.widget.TextView;

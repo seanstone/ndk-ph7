@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="tw.edu.ntu.as.windoopi"
+    package="com.github.seanstone.ndkexample"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -18,7 +18,7 @@
 
     <application
         android:allowBackup="false"
-        android:label="WindooPi"
+        android:label="NDKExample"
         android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" >
         <activity
             android:name="android.app.NativeActivity"
@@ -26,7 +26,7 @@
             android:screenOrientation="landscape" >
             <meta-data
                 android:name="android.app.lib_name"
-                android:value="WindooPi" />
+                android:value="NDKExample" />
             <!-- <meta-data
                 android:name="android.app.func_name"
                 android:value="onCreate" /> -->
@@ -35,7 +35,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter> -->
         </activity>
-        <activity android:name=".HelloJni">
+        <activity android:name=".JniConsole">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
