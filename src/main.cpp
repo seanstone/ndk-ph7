@@ -21,7 +21,7 @@ void print(jobject obj, char* str)
     env->CallVoidMethod(obj, method, jstr);
 }
 
-extern "C" void Java_com_github_seanstone_ndkexample_JniConsole_init (jobject obj, JNIEnv* env)
+extern "C" void Java_com_github_seanstone_ndkexample_JniConsole_init (JNIEnv* env, jobject obj)
 {
     char* str = "Hello!";
     print(obj, str);
