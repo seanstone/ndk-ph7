@@ -1,35 +1,3 @@
-/*
- * Compile this file together with the ph7 engine source code to generate
- * the executable. For example:
- *  gcc -W -Wall -O6 -o ph7_test ph7_intro.c ph7.c
-*/
-/*
- * This simple program is a quick introduction on how to embed and start
- * experimenting with the PH7 engine without having to do a lot of tedious
- * reading and configuration.
- *
- * For an introduction to the PH7 C/C++ interface, please refer to this page
- *        http://ph7.symisc.net/api_intro.html
- * For the full C/C++ API reference guide, please refer to this page
- *        http://ph7.symisc.net/c_api.html
- */
-/*
- * The following is the PHP program to execute.
- *   <?php
- *    echo 'Welcome guest'.PHP_EOL;
- *    echo 'Current system time is: '.date('Y-m-d H:i:s').PHP_EOL;
- *    echo 'and you are running '.php_uname();
- *   ?>
- * That is, this simple program when running should display a greeting
- * message, the current system time and the host operating system.
- * A typical output of this program would look like this:
- *
- *	Welcome guest
- *	Current system time is: 2012-09-14 02:08:44
- *	and you are running Microsoft Windows 7 localhost 6.1 build 7600 x86
- *
- */
-
 #include "print.hpp"
 
 extern "C"
@@ -61,34 +29,21 @@ static void Fatal(const char *zMsg)
 /*
  * VM output consumer callback.
  * Each time the virtual machine generates some outputs, the following
- * function gets called by the underlying virtual machine  to consume
+ * function gets called by the underlying virtual machine to consume
  * the generated output.
- * All this function does is redirecting the VM output to STDOUT.
  * This function is registered later via a call to ph7_vm_config()
  * with a configuration verb set to: PH7_VM_CONFIG_OUTPUT.
  */
 static int Output_Consumer(const void *pOutput, unsigned int nOutputLen, void *pUserData /* Unused */)
 {
-	/*
-	 * Note that it's preferable to use the write() system call to display the output
-	 * rather than using the libc printf() which everybody now is extremely slow.
-	 */
-	//printf("%.*s",
-	//	nOutputLen,
-	//	(const char *)pOutput /* Not null terminated */
-	//	);
-
     char output[nOutputLen+1];
     sprintf(output, (const char*) pOutput, nOutputLen);
     output[nOutputLen] = '\0';
     print(output);
 
-	/* All done, VM output was redirected to STDOUT */
 	return PH7_OK;
 }
-/*
- * Main program: Compile and execute the PHP program defined above.
- */
+
 int intro(void)
 {
 	ph7 *pEngine; /* PH7 engine */
