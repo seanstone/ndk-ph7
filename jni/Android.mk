@@ -7,7 +7,7 @@ LOCAL_MODULE    := NDKExample
 
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/../include $(LOCAL_PATH)/../PH7
 
-FILE_LIST += $(wildcard $(LOCAL_PATH)/../src/*.cpp)
+FILE_LIST += $(wildcard $(LOCAL_PATH)/../src/*.cpp $(LOCAL_PATH)/../src/*.c)
 LOCAL_SRC_FILES := $(FILE_LIST:$(LOCAL_PATH)/%=%)
 LOCAL_SRC_FILES += ../PH7/ph7.c
 

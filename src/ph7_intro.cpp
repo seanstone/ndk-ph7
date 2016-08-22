@@ -29,6 +29,12 @@
  *	and you are running Microsoft Windows 7 localhost 6.1 build 7600 x86
  *
  */
+
+#include "print.hpp"
+
+extern "C"
+{
+
 #define PHP_PROG "<?php "\
                  "echo 'Welcome guest'.PHP_EOL;"\
                  "echo 'Current system time is: '.date('Y-m-d H:i:s').PHP_EOL;"\
@@ -67,10 +73,16 @@ static int Output_Consumer(const void *pOutput, unsigned int nOutputLen, void *p
 	 * Note that it's preferable to use the write() system call to display the output
 	 * rather than using the libc printf() which everybody now is extremely slow.
 	 */
-	printf("%.*s",
-		nOutputLen,
-		(const char *)pOutput /* Not null terminated */
-		);
+	//printf("%.*s",
+	//	nOutputLen,
+	//	(const char *)pOutput /* Not null terminated */
+	//	);
+
+    char output[nOutputLen+1];
+    sprintf(output, (const char*) pOutput, nOutputLen);
+    output[nOutputLen] = '\0';
+    print(output);
+
 	/* All done, VM output was redirected to STDOUT */
 	return PH7_OK;
 }
@@ -140,4 +152,6 @@ int intro(void)
 	ph7_vm_release(pVm);
 	ph7_release(pEngine);
 	return 0;
+}
+
 }

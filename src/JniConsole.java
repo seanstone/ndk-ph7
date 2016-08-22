@@ -21,7 +21,7 @@ public class JniConsole extends Activity
 
     public void print(String string)
     {
-        textview.setText(string);
+        textview.append(string);
     }
 
     public native void init();
